@@ -77,9 +77,10 @@ Response:
 - Python 3.11
 
 ### Deploy to AWS
-``bash
+```bash
 sam build
 sam deploy --guided
+```
 
 ### Local Development
 Run the API locally using SAM:
@@ -98,8 +99,7 @@ curl -X POST http://127.0.0.1:3000/score \
 
 ## Observability
 
-```markdown
-## Observability & Logging
+### Observability & Logging
 
 The application is observable at both the API and compute layers:
 
@@ -109,7 +109,7 @@ The application is observable at both the API and compute layers:
 - Each API request can be correlated with the corresponding Lambda execution.
 
 Example access log entry:
-c536c1bf-a119-4859-90f1-1991df6ae9d1) HTTP Method: POST, Resource Path: /score
+(c536c1bf-a119-4859-90f1-1991df6ae9d1) HTTP Method: POST, Resource Path: /score
 
 ---
 
