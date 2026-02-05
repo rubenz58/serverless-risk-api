@@ -15,6 +15,44 @@ Globals:
       LogFormat: JSON
 
 Resources:
+  ScoresTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Scores
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: api/
+      Handler: app.handler
+      Runtime: python3.11
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName: !Ref ScoresTable
+      Environment:
+        Variables:
+          SCORES_TABLE: !Ref ScoresTable
+      Architectures:
+      - x86_64
+      Events:
+        GetScore:
+          Type: Api
+          Properties:
+            Path: /score/{id}
+            Method: get
+        PostScore:
+          Type: Api
+          Properties:
+            Path: /score
+            Method: post
+
   HelloWorldFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
@@ -44,6 +82,7 @@ Resources:
           Properties:
             Path: /health
             Method: get
+
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
