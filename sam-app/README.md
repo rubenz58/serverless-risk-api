@@ -112,6 +112,8 @@ Example access log entry:
 ```markdown
 (c536c1bf-a119-4859-90f1-1991df6ae9d1) HTTP Method: POST, Resource Path: /score
 ```
+![Alt text](Logging.png)
+
 
 ---
 
