@@ -137,6 +137,6 @@ sam delete
 ---
 
 ## Author
-Ruben Zaccaroni
-Software Engineer
+Ruben Zaccaroni\n
+Software Engineer\n
 Python • AWS • Serverless • REST APIs
